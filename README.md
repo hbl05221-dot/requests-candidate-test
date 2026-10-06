@@ -29,7 +29,7 @@ npm run dev
 ```
 
 Opens at `http://localhost:5173`.  
-The API base URL is hardcoded in `frontend/src/api/requestsApi.ts` (`http://localhost:5056`).  
+The API base URL is hardcoded in `frontend/src/api/requestsApi.ts` (`http://localhost:60702`).  
 Update it if your backend port differs.
 
 **Auth simulation** (no real auth in the exercise):  
