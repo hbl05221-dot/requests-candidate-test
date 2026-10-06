@@ -2,7 +2,7 @@
 
 ## How to Run
 
-### Backend (.NET 8)
+### Backend (.NET 10)
 
 ```bash
 cd src/Requests.Api
@@ -53,7 +53,7 @@ dotnet test
 
 | Area       | Choice                          | Why                                                                      |
 |------------|---------------------------------|--------------------------------------------------------------------------|
-| Backend    | .NET 8 / ASP.NET Core (existing)| Kept the existing stack; no reason to change                             |
+| Backend    | .NET 10 / ASP.NET Core (existing)| Kept the existing stack; upgraded from net8.0 to net10.0 to match installed runtime |
 | ORM        | EF Core InMemory                | Already configured; swappable for SQL Server/PostgreSQL with one line     |
 | Frontend   | React 18 + Vite + TypeScript    | Faster DX than Angular for a focused PoC; minimal boilerplate            |
 | State      | useState / useEffect (no Redux) | No cross-component state sharing needed; Redux would be over-engineering  |
