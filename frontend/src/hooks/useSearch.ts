@@ -12,7 +12,7 @@ interface UseSearchResult {
  * Fires a search whenever `params` changes.
  * Cancels in-flight requests via AbortController so stale results are never shown.
  */
-export function useSearch(params: SearchParams): UseSearchResult {
+export function useSearch(params: SearchParams | null): UseSearchResult {
   const [data,    setData]    = useState<PagedResult<RequestDto> | null>(null);
   const [loading, setLoading] = useState(false);
   const [error,   setError]   = useState<string | null>(null);
@@ -20,6 +20,8 @@ export function useSearch(params: SearchParams): UseSearchResult {
   const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
+    if (!params) return;
+
     // Cancel any previous in-flight request
     abortRef.current?.abort();
     const controller  = new AbortController();

@@ -3,16 +3,19 @@ import type { PagedResult, RequestDto, SearchParams } from './types';
 // Update this port to match what `dotnet run` prints in the console (e.g. "Now listening on: http://localhost:XXXXX")
 const BASE_URL = 'http://localhost:60702/api/requests';
 
-// In the exercise auth is passed via headers.
-// These values simulate the currently logged-in user.
-// Change X_IS_ADMIN to 'false' and X_USER_ID to e.g. '1' to test regular-user filtering.
-const X_USER_ID  = '1';
-const X_IS_ADMIN = 'true';
+// Current user context – set dynamically by the UserSwitcher component
+let currentUserId  = 1;
+let currentIsAdmin = true;
+
+export function setUserContext(userId: number, isAdmin: boolean) {
+  currentUserId  = userId;
+  currentIsAdmin = isAdmin;
+}
 
 function authHeaders(): HeadersInit {
   return {
-    'X-User-Id':  X_USER_ID,
-    'X-Is-Admin': X_IS_ADMIN,
+    'X-User-Id':  String(currentUserId),
+    'X-Is-Admin': String(currentIsAdmin),
   };
 }
 
